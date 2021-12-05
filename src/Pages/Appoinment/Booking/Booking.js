@@ -9,7 +9,7 @@ const Booking = ({booking, date}) => {
     const handleBookingClose = () => setBookingOpen(false);
     return (
        <>
-        <Grid item xs={12} sm={2} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
             <Paper elevation={3} sx={{py: 5}}>
                 <Typography sx={{color: 'info.main', fontWeight: 600}} variant="h5" gutterBottom component="div">
                     {name}
@@ -20,7 +20,8 @@ const Booking = ({booking, date}) => {
                 <Typography variant="caption" display="block" gutterBottom>
                     {space} SPACES AVAILABLE
                 </Typography>
-                <Button onClick={handleBookingOpen} variant="contained">BOOK APPOINMENT</Button>
+                <Button onClick={handleBookingOpen} 
+                variant="contained">BOOK APPOINMENT</Button>
             </Paper>
         </Grid>
         <BookingModal
