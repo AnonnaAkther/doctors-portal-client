@@ -6,7 +6,7 @@ import login from '../../../images/login.png';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const {user, loginUser, isLoading, authError} = useAuth();
+    const {user, loginUser,signInWithGoogle, isLoading, authError} = useAuth();
 
     const location = useLocation();
     const history = useHistory();
@@ -21,7 +21,13 @@ const Login = () => {
     const handleLoginSubmit = e => {
         loginUser(loginData.email, loginData.password, location, history);
        e.preventDefault();
+    
     }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle(location, history)
+    }
+
     return (
         <Container>
             <Grid container spacing={2}>
@@ -33,7 +39,8 @@ const Login = () => {
                     id="standard-basic" 
                     label="Your Email" 
                     name="email"
-                    onChange={handleOnChange}
+                    type="email"
+                    onBlur={handleOnChange}
                     variant="standard"
                     ></TextField>
                     <TextField 
@@ -42,7 +49,7 @@ const Login = () => {
                     label="Your Password" 
                     type="password"
                     name="password"
-                    onChange={handleOnChange}
+                    onBlur={handleOnChange}
                     variant="standard"/>
                     
                     <Button sx={{ width: '75%', m: 1 }}
@@ -58,6 +65,8 @@ const Login = () => {
                     {user?.email && <Alert severity="success">User Created Successfully</Alert>}
                     {authError && <Alert severity="error">{authError}</Alert>}
                 </form>
+                <p>--------------or--------------</p>
+                <Button onClick={handleGoogleSignIn} variant="contained">Google Sign In</Button>
             </Grid>
             <Grid item xs={12} md={6}>
                 <img style={{width: '100%'}} src={login} alt="" />
