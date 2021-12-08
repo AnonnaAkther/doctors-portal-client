@@ -28,17 +28,20 @@ const Navigation = () => {
               Doctors Portal
             </Typography>
             <Link to="/appointment">
-            <Button style={{textDecoration: 'none', color: 'white'}} color="inherit">Appointment</Button>
+            <Button style={{textDecoration: 'none', color: 'white'}} color="inherit">Appointment</Button></Link>
             {
               user?.email ?
-
-            <Button onClick={logout} color="inherit">Logout</Button>
+              <Box>
+                <NavLink style={{textDecoration: 'none', color: 'white'}} to="/dashboard">
+                  <Button color="inherit">Dashboard</Button>
+                </NavLink>
+                <Button onClick={logout} color="inherit">Logout</Button>
+              </Box>
             :
             <NavLink style={{textDecoration: 'none', color: 'white'}} to="/login">
             <Button color="inherit">Login</Button>
             </NavLink>
             }
-            </Link>
           </Toolbar>
         </AppBar>
       </Box>
